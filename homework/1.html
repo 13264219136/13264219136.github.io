@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>happy猫大酒楼</title>
+
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 95%;
+        background-color: #fff;
+        background-image : url(images/猫猫大酒楼.jpg);
+        background-position : center;
+        background-size: cover;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      #uls {
+        width: 500px;
+        height: 500px;
+        margin: 40px auto;
+      }
+
+      li {
+        width: 150px;
+        height: 150px;
+        background-color: #FF8888;
+        opacity:0.8;
+        border-radius: 5px;
+        float: left;
+        margin: 5px;
+        ist-style: none;
+        text-align: center;
+        line-height: 150px;
+        color: rgb(235, 235, 235);
+        font-size: 20px;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px #000000;
+      }
+      .light {
+        width: 150px;
+        height: 150px;
+        background-color: #A20055;
+      }
+
+      .Mygif {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        background-image : url(images/1.gif);
+        animation-name: example;
+        animation-duration: 8s;
+        animation-iteration-count: infinite;
+      }
+      @keyframes example {
+        0%   {left:40px; top:200px;}
+        50%  {left:1500px; top:200px;}
+        100% {left:40px; top:200px;}
+      }
+
+      .Begin{
+        text-align: center;
+        border-radius: 5px;
+      }
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+  <div class="Begin">
+    您的名字是:<br>
+    <input type="text" id="user" name="username" class="uusr"><br>
+    <button onclick="get_input_value()" >提交</button>
+  </div>
+
+    <ul id="uls">
+      <li class="light">麻辣烫</li>
+      <li>麻辣香锅</li>
+      <li>火锅</li>
+      <li>日料</li>
+      <li>
+        <button id="btn1">开始</button>
+        <button id="btn2">结束</button>
+      </li>
+      <li>韩餐</li>
+      <li>涮羊肉</li>
+      <li>西北风</li>
+      <li>家常小炒</li>
+    </ul>
+
+    <div class="Mygif"></div>
+
+    <!--老师 由于文件太大 我的happy猫音乐放不上去-->
+    <audio src="images/happy.mp4" id="aud" autoplay="true" controls="controls" preload="auto" loop="true" autostart=“true”></audio>
+
+
+    <script>
+        function get_input_value(){
+            var name = document.getElementsByClassName("uusr")[0].value;
+            var x;
+            x="我亲爱的人类朋友 " + name + "! 欢迎你！";
+            alert(x);
+        }
+
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        var array = [0, 1, 2, 5, 8, 7, 6, 3];
+        var timer = null; //定时器
+        var num = 0;
+        var lis = document.getElementsByTagName("li");
+
+        btn1.onclick = function () {
+          clearInterval(timer); //清空
+          timer = setInterval(function () {
+
+            for (var item of lis) {
+              item.className = "";
+            }
+            num++;
+            if (num >= array.length) {
+              num = 0;
+            }
+
+            lis[array[num]].className = "light";
+          }, 80);
+        };
+
+        btn2.onclick = function () {
+          clearInterval(timer);
+        };
+    </script>
+
+
+</body>
+</html>
